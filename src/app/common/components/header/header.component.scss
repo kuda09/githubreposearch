@@ -1,0 +1,21 @@
+@import '~clarity-ui/src/color/utils/_colors.clarity.scss';
+
+.header {
+
+  .branding {
+
+    h1 {
+      color: #fff;
+      margin-top: 8px;
+
+    }
+  }
+
+  .call-to-action {
+    p {
+      align-self: center;
+      margin-right: 1.5rem;
+      color: $clr-dark-midtone-gray;
+    }
+  }
+}
