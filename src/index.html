@@ -1,14 +1,33 @@
 <!doctype html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <title>Githubreposearch</title>
-  <base href="/">
+    <meta charset="utf-8">
+    <title>Githubreposearch</title>
+    <base href="/">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <style>
+
+        body {
+
+            height: 100%;
+            position: relative;
+        }
+
+        .spinner {
+
+            position: absolute;
+            top: 50%;
+            left: 50%;
+
+        }
+    </style>
 </head>
 <body>
-  <app-root>Loading...</app-root>
+    <app-root>
+        <span class="spinner spinner-inline">Loading...</span>
+    </app-root>
 </body>
 </html>

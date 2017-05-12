@@ -3,7 +3,17 @@
     Search for a repository
   </div>
   <div class="card-block">
-
+    <section class="form-block">
+      <div class="form-group">
+        <input type="text"
+               #input
+               (keyup)="keyUpSearch(input.value)"
+               [value]="query"
+               placeholder="Type to start searching..."
+               size="45"
+        >
+      </div>
+    </section>
   </div>
 
 </div>

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+
+import 'rxjs/add/operator/distinctUntilChanged';
 
 @Component({
   selector: 'search-card',
@@ -7,9 +9,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchCardComponent implements OnInit {
 
-  constructor() { }
+
+  @Input()
+  query = '';
+
+  @Output()
+  search = new EventEmitter<string>();
+
+  private keyUpStream = new EventEmitter<string>();
+
+  constructor() {
+
+    this.keyUpStream
+        .distinctUntilChanged()
+        .subscribe((value) => this.search.emit(value));
+  }
 
   ngOnInit() {
   }
+
+  keyUpSearch(query: string) {
+
+    this.keyUpStream.emit(query);
+  }
+
+
+
 
 }

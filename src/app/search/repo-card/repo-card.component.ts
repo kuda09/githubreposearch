@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
+import {IRepo} from "../../common/models/repo";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'repo-card',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RepoCardComponent implements OnInit {
 
-  constructor() { }
+
+  @Input()
+  repo: IRepo;
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
+
+
+  goTo (owner, repoName) {
+
+    this.router.navigate([`/repo/${owner}/${repoName}`]);
+  }
+
 
 }

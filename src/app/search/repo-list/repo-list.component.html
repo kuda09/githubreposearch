@@ -1,3 +1,13 @@
-<p>
-  repo-list works!
-</p>
+<div class="repo-list">
+    <div class="card">
+        <div class="card-header" *ngIf="!isLoading">
+            Repos for <strong>{{query}}</strong>
+        </div>
+        <div class="card-block">
+            <div class="spinner spinner-md" *ngIf="isLoading"></div>
+            <ng-container *ngIf="!isLoading">
+                <repo-card *ngFor="let repo of repos" [repo]="repo"></repo-card>
+            </ng-container>
+        </div>
+    </div>
+</div>
