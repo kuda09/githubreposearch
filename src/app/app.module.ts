@@ -4,7 +4,6 @@ import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {ClarityModule} from "clarity-angular";
 import { AppRoutingModule } from './app-routing.module';
-import {EffectsModule} from "@ngrx/effects";
 
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './common/components/header/header.component';
@@ -15,6 +14,8 @@ import {StoreModule} from "@ngrx/store";
 import {rootReducer, applicationInitialState} from "./store/index";
 import {RouterStoreModule} from "@ngrx/router-store";
 import {StoreDevtoolsModule} from "@ngrx/store-devtools";
+import {MdCoreModule} from "@angular2-material/core";
+import {NoopAnimationsModule} from "@angular/platform-browser/animations";
 
 
 @NgModule({
@@ -27,10 +28,12 @@ import {StoreDevtoolsModule} from "@ngrx/store-devtools";
     imports: [
         BrowserModule,
         FormsModule,
+        MdCoreModule,
         HttpModule,
         AppRoutingModule,
         StoreModule.provideStore(rootReducer, applicationInitialState),
         RouterStoreModule.connectRouter(),
+        NoopAnimationsModule,
         StoreDevtoolsModule.instrumentOnlyWithExtension(),
         ClarityModule.forRoot()
     ],

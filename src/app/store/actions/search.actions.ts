@@ -10,9 +10,7 @@ export const ActionTypes = {
     SEARCH_ERROR: type('Search Error'),
     LOAD_TRENDING: type('Trending'),
     LOAD_TRENDING_COMPLETE: type('Trending Complete'),
-    SELECT: type('Select'),
-    LOAD: type('Load'),
-    LOAD_ERROR: type('Load Error')
+    SELECT: type('Select')
 }
 
 
@@ -41,16 +39,6 @@ export class LoadTrendindCompleteAction implements Action {
     constructor(public payload: IRepo[]) {}
 }
 
-export class LoadAction implements Action {
-    type: string = ActionTypes.LOAD;
-    constructor(public payload: IRepo) {}
-}
 
 
-export class LoadErrorAction implements Action {
-    type: string = ActionTypes.LOAD_ERROR;
-    constructor(public payload: IRepo) {}
-}
-
-
-export type Actions = SearchAction | SearchCompleteAction | SearchCompleteError | LoadTrendingAction | LoadTrendindCompleteAction | LoadAction | LoadErrorAction;
+export type Actions = SearchAction | SearchCompleteAction | SearchCompleteError | LoadTrendingAction | LoadTrendindCompleteAction;

@@ -1,7 +1,9 @@
+///<reference path="reducers/search.reducer.ts"/>
 import {IApplicationState} from "./index";
 import {createSelector} from "reselect";
 import {getEntities, getQuery, getLoading, getTrending, getError} from "./reducers/search.reducer";
 import {RouterState} from "@ngrx/router-store";
+import {getPulls, getIssues, getCommits, getEntity} from "./reducers/repo.reducer";
 
 //search selectors
 export const getRepoSeachState = (state: IApplicationState) => state.search;
@@ -12,7 +14,11 @@ export const getReposSearchTrending = createSelector(getRepoSeachState, getTrend
 export const getReposSearchError= createSelector(getRepoSeachState, getError);
 
 //repo selectors
-
+export const getRepoState = (state: IApplicationState) => state.repo;
+export const getReposEntity = createSelector(getRepoState, getEntity);
+export const getReposCommits = createSelector(getRepoState, getCommits);
+export const getReposIssues = createSelector(getRepoState, getIssues);
+export const getReposPulls = createSelector(getRepoState, getPulls);
 
 //router seletors
 export const getRouterState = (state: IApplicationState) => state.router;

@@ -124,6 +124,14 @@
   dependencies:
     tsickle "^0.21.0"
 
+"@angular2-material/core@^2.0.0-alpha.8-3":
+  version "2.0.0-alpha.8-3"
+  resolved "https://registry.yarnpkg.com/@angular2-material/core/-/core-2.0.0-alpha.8-3.tgz#422ce3b939fcf88ba226ac3c9882813d76ab9a6d"
+
+"@angular2-material/tabs@^2.0.0-alpha.8-3":
+  version "2.0.0-alpha.8-3"
+  resolved "https://registry.yarnpkg.com/@angular2-material/tabs/-/tabs-2.0.0-alpha.8-3.tgz#9168e4c6b6b3a645d58181c084ee2fa87af46c8c"
+
 "@covalent/core@^1.0.0-beta.3-2":
   version "1.0.0-beta.3-2"
   resolved "https://registry.yarnpkg.com/@covalent/core/-/core-1.0.0-beta.3-2.tgz#f332d1485939458f0199c193e98bd0ea619beb9f"
@@ -2009,6 +2017,10 @@ graceful-fs@^4.1.11, graceful-fs@^4.1.2, graceful-fs@^4.1.6:
 "graceful-readlink@>= 1.0.0":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/graceful-readlink/-/graceful-readlink-1.0.1.tgz#4cafad76bc62f02fa039b2f94e9a3dd3a391a725"
+
+hammerjs@^2.0.8:
+  version "2.0.8"
+  resolved "https://registry.yarnpkg.com/hammerjs/-/hammerjs-2.0.8.tgz#04ef77862cff2bb79d30f7692095930222bf60f1"
 
 handle-thing@^1.2.4:
   version "1.2.5"

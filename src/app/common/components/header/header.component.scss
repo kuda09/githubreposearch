@@ -2,6 +2,8 @@
 
 .header {
 
+  display: flex;
+
   .branding {
 
     h1 {
@@ -15,7 +17,14 @@
     p {
       align-self: center;
       margin-right: 1.5rem;
+      margin-top: 18px;
       color: $clr-dark-midtone-gray;
     }
+  }
+
+  .header-actions {
+    margin-left:auto;
+    justify-content: flex-end;
+    display: flex;
   }
 }
