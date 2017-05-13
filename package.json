@@ -4,9 +4,10 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "./node_modules/nodemon/bin/nodemon.js server.js",
     "build": "ng build",
     "test": "ng test",
+    "postinstall": "ng build --env=prod -prod",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
@@ -39,6 +40,7 @@
     "hammerjs": "^2.0.8",
     "lodash": "^4.17.4",
     "ngrx-store-freeze": "^0.1.9",
+    "nodemon": "^1.11.0",
     "reselect": "^3.0.1",
     "rxjs": "^5.1.0",
     "zone.js": "^0.8.4"
