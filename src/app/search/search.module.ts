@@ -9,11 +9,13 @@ import {TrendingComponent} from './trending/trending.component';
 import {SearchService} from "./services/search.service";
 import {EffectsModule} from "@ngrx/effects";
 import {SearchEffectService} from "../store/effects/search-effect.service";
+import {MdListModule} from "@angular/material";
 
 @NgModule({
     imports: [
         CommonModule,
         SearchRoutingModule,
+        MdListModule,
         EffectsModule.run(SearchEffectService)
     ],
     providers: [SearchService],

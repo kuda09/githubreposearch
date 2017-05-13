@@ -4,7 +4,7 @@ import {Response} from "@angular/http";
 
 export interface ISearchState {
     entities: IRepo[];
-    trending: boolean;
+    trending: IRepo[];
     query: string;
     loading: boolean;
     error: null;
@@ -13,7 +13,7 @@ export interface ISearchState {
 
 export const searchInitialState: ISearchState = {
     entities: [],
-    trending: true,
+    trending: [],
     query: null,
     loading: false,
     error: null,
@@ -30,7 +30,6 @@ export function searchReducer(state = searchInitialState, action: Actions): ISea
             if(!query) return state;
 
             return Object.assign({}, searchInitialState, {
-                trending: false,
                 query: query,
                 loading: true
             })
@@ -66,8 +65,7 @@ export function searchReducer(state = searchInitialState, action: Actions): ISea
             const entities = <IRepo[]>action.payload;
 
             return Object.assign({}, searchInitialState, {
-                entities: entities,
-                trending: ActionTypes.LOAD_TRENDING_COMPLETE === action.type,
+                trending: entities,
                 query: state.query,
                 loading: false,
                 error: null,

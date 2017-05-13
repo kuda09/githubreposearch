@@ -6,19 +6,19 @@ import {RouterState} from "@ngrx/router-store";
 import {getPulls, getIssues, getCommits, getEntity} from "./reducers/repo.reducer";
 
 //search selectors
-export const getRepoSeachState = (state: IApplicationState) => state.search;
-export const getReposSearchEntities = createSelector(getRepoSeachState, getEntities);
-export const getReposSearchQuery = createSelector(getRepoSeachState, getQuery);
-export const getReposSearchLoading = createSelector(getRepoSeachState, getLoading);
-export const getReposSearchTrending = createSelector(getRepoSeachState, getTrending);
-export const getReposSearchError= createSelector(getRepoSeachState, getError);
+export const getSearchStateSelector = (state: IApplicationState) => state.search;
+export const getSearchEntitiesSelector = createSelector(getSearchStateSelector, getEntities);
+export const getSearchQuerySelector = createSelector(getSearchStateSelector, getQuery);
+export const getSearchLoadingSelector = createSelector(getSearchStateSelector, getLoading);
+export const getTrendingEntitiesSelector = createSelector(getSearchStateSelector, getTrending);
+export const getSearchErrorSelector= createSelector(getSearchStateSelector, getError);
 
 //repo selectors
-export const getRepoState = (state: IApplicationState) => state.repo;
-export const getRepoEntitySelector = createSelector(getRepoState, getEntity);
-export const getRepoCommitsSelector = createSelector(getRepoState, getCommits);
-export const getRepoIssuesSelector = createSelector(getRepoState, getIssues);
-export const getRepoPullsSelector = createSelector(getRepoState, getPulls);
+export const getRepoStateSelector = (state: IApplicationState) => state.repo;
+export const getRepoEntitySelector = createSelector(getRepoStateSelector, getEntity);
+export const getRepoCommitsSelector = createSelector(getRepoStateSelector, getCommits);
+export const getRepoIssuesSelector = createSelector(getRepoStateSelector, getIssues);
+export const getRepoPullsSelector = createSelector(getRepoStateSelector, getPulls);
 
 //router seletors
 export const getRouterState = (state: IApplicationState) => state.router;

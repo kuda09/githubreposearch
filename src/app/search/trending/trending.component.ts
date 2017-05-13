@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
+import {IRepo} from "../../common/models/repo";
 
 @Component({
   selector: 'trending',
@@ -7,6 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TrendingComponent implements OnInit {
 
+
+  @Input()
+  trends: IRepo[];
   constructor() { }
 
   ngOnInit() {

@@ -15,4 +15,8 @@ export class IssuesComponent implements OnInit {
   ngOnInit() {
   }
 
+  getLabelColor(color) {
+    return '#' + color;
+  }
+
 }

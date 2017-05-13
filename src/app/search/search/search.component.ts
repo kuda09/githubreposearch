@@ -19,6 +19,7 @@ export class SearchComponent implements OnInit {
   searchQuery$: Observable<string>;
   isLoading$: Observable<boolean>;
   repos$: Observable<IRepo[]>;
+  trending$: Observable<IRepo[]>;
   noResults$: Observable<boolean>;
 
   constructor(
@@ -31,8 +32,10 @@ export class SearchComponent implements OnInit {
     this.searchQuery$ = this.searchService.getSearchQuery();
     this.isLoading$ = this.searchService.isLoading();
     this.repos$ = this.searchService.getRepos();
+    this.trending$ = this.searchService.getTrending();
 
     this.initialSearch();
+    this.searchService.loadTrending();
   }
 
 

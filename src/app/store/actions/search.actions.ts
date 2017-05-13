@@ -34,11 +34,11 @@ export class LoadTrendingAction implements Action {
     constructor(public payload?: any) {}
 }
 
-export class LoadTrendindCompleteAction implements Action {
-    type: string = ActionTypes.LOAD_TRENDING;
+export class LoadTrendingCompleteAction implements Action {
+    type: string = ActionTypes.LOAD_TRENDING_COMPLETE;
     constructor(public payload: IRepo[]) {}
 }
 
 
 
-export type Actions = SearchAction | SearchCompleteAction | SearchCompleteError | LoadTrendingAction | LoadTrendindCompleteAction;
+export type Actions = SearchAction | SearchCompleteAction | SearchCompleteError | LoadTrendingAction | LoadTrendingCompleteAction;

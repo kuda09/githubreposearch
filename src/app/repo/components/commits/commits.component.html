@@ -1,3 +1,17 @@
-<code>
-  {{ commits | json}}
-</code>
+<ng-container *ngFor="let commit of commits">
+  <div class="card">
+    <div class="card-header">
+      <a *ngIf="commit.author" href="{{commit.author.html_url}}" title="Author: {{commit.author.login}}" class="card-header-image">
+        <img [src]="commit.author.avatar_url" alt="{{commit.author.login}}">
+      </a>
+      <span class="card-header-title">{{commit.commit.message }}</span>
+      <a href="{{commit.html_url}}" class="btn btn-outline">{{commit.sha }}</a>
+    </div>
+    <div class="card-block">
+      <div class="card-text">
+        <a href="{{commit.author?.html_url}}">{{commit.commit.author.name}}</a>
+        committed on {{commit.commit.author.date}}
+      </div>
+    </div>
+  </div>
+</ng-container>

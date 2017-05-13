@@ -23,7 +23,7 @@ export class GithubApiService {
   }
 
   retrieveTrendingRepos(days = 7, language = 'JavaScript'): Observable<IRepo[]> {
-    return this.http.get(`${this.API_URL}/search/repositories?q=${`created:>${this.getDate(days)} language:${language}`}`, this.requestOptions)
+    return this.http.get(`${this.API_URL}/search/repositories?q=created:>${this.getDate(days)} language:${language}}`, this.requestOptions)
         .map((res: Response) => res.json())
         .map((searchData: { items: IRepo[]}) => searchData.items);
   }
