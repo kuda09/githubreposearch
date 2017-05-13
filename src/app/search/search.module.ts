@@ -14,7 +14,7 @@ import {SearchEffectService} from "../store/effects/search-effect.service";
     imports: [
         CommonModule,
         SearchRoutingModule,
-        EffectsModule.run(SearchEffectService),
+        EffectsModule.run(SearchEffectService)
     ],
     providers: [SearchService],
     declarations: [SearchComponent, SearchCardComponent,

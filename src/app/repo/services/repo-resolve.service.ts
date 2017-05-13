@@ -6,7 +6,7 @@ import {Observable} from "rxjs";
 import {GithubApiService} from "../../common/services/github-api.service";
 import {IApplicationState} from "../../store/index";
 import {Store} from "@ngrx/store";
-import {getReposEntity} from "../../store/selectors";
+import {getRepoEntitySelector} from "../../store/selectors";
 import {Response} from "@angular/http";
 import {LoadErrorAction, LoadAction} from "../../store/actions/repo.actions";
 
@@ -35,7 +35,7 @@ export class RepoResolveService implements Resolve<IRepo> {
 
     getRepoFromStore(name: string): Observable<IRepo| boolean> {
 
-        return this.store.select(getReposEntity)
+        return this.store.select(getRepoEntitySelector)
             .map((repo: IRepo) => {
                 return repo && repo.full_name === name ? repo : false;
             })

@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {ClarityModule} from "clarity-angular";
-import { AppRoutingModule } from './app-routing.module';
+import {AppRoutingModule} from './app-routing.module';
 
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './common/components/header/header.component';
@@ -37,7 +37,7 @@ import {NoopAnimationsModule} from "@angular/platform-browser/animations";
         StoreDevtoolsModule.instrumentOnlyWithExtension(),
         ClarityModule.forRoot()
     ],
-    providers: [ GithubApiService],
+    providers: [GithubApiService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -15,10 +15,10 @@ export const getReposSearchError= createSelector(getRepoSeachState, getError);
 
 //repo selectors
 export const getRepoState = (state: IApplicationState) => state.repo;
-export const getReposEntity = createSelector(getRepoState, getEntity);
-export const getReposCommits = createSelector(getRepoState, getCommits);
-export const getReposIssues = createSelector(getRepoState, getIssues);
-export const getReposPulls = createSelector(getRepoState, getPulls);
+export const getRepoEntitySelector = createSelector(getRepoState, getEntity);
+export const getRepoCommitsSelector = createSelector(getRepoState, getCommits);
+export const getRepoIssuesSelector = createSelector(getRepoState, getIssues);
+export const getRepoPullsSelector = createSelector(getRepoState, getPulls);
 
 //router seletors
 export const getRouterState = (state: IApplicationState) => state.router;

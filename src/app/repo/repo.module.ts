@@ -5,13 +5,17 @@ import {IssuesComponent} from './components/issues/issues.component';
 import {CommitsComponent} from './components/commits/commits.component';
 import {PullRequestsComponent} from './components/pull-requests/pull-requests.component';
 import {RepoRoutingModule} from "./repo-routing.module";
-import { RepoCardComponent } from './components/repo-card/repo-card.component';
+import {RepoCardComponent} from './components/repo-card/repo-card.component';
 import {MdTabsModule} from "@angular/material";
+import {RepoService} from "./services/repo.service";
+import {EffectsModule} from "@ngrx/effects";
+import {RepoEffectService} from "../store/effects/repo-effect.service";
 
 @NgModule({
     imports: [
         CommonModule,
         MdTabsModule,
+        EffectsModule.run(RepoEffectService),
         RepoRoutingModule
     ],
     declarations: [
@@ -20,6 +24,9 @@ import {MdTabsModule} from "@angular/material";
         CommitsComponent,
         PullRequestsComponent,
         RepoCardComponent
+    ],
+    providers: [
+        RepoService
     ]
 })
 export class RepoModule {
