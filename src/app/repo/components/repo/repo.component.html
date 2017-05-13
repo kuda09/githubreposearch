@@ -1,0 +1,15 @@
+<div class="repo-container">
+  <repo-card [repo]="repo$ | async"></repo-card>
+  <br><br><br>
+  <md-tab-group>
+    <md-tab label="Issues">
+      <issues [issues]="issues$ | async"></issues>
+    </md-tab>
+    <md-tab label="Commits">
+      <commits [commits]="commits$ | async"></commits>
+    </md-tab>
+    <md-tab label="Pull Requests">
+      <pull-requests [pulls]="pulls$ | async"></pull-requests>
+    </md-tab>
+  </md-tab-group>
+</div>
