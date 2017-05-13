@@ -19,6 +19,9 @@ describe('reducer: repo', ()  => {
     it('should produce state for LOAD_COMMITS_COMPLETE', () => {
 
         const newState = repoReducer(repoInitialState, new LoadCommitsCompleteAction(commits));
+        expect(newState.commits).toBeTruthy();
+        expect(newState.commits.length).toBe(commits.length);
+        expect(newState.loading).toBe(false);
     })
 
 
