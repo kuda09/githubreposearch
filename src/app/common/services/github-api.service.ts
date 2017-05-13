@@ -28,6 +28,11 @@ export class GithubApiService {
         .map((searchData: { items: IRepo[]}) => searchData.items);
   }
 
+  retrieveRepo(name: string): Observable<IRepo> {
+    return this.http.get(`${this.API_URL}/repos/${name}`, this.requestOptions)
+        .map((res: Response) => res.json());
+  }
+
 
   retrieveRepoCommits(name: string): Observable<ICommit[]> {
     return this.http.get(`${this.API_URL}/repos/${name}/commits`, this.requestOptions)
