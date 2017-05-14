@@ -39,7 +39,7 @@ export class SearchEffectService {
     @Effect()
     trending$: Observable<LoadTrendingCompleteAction> = this.actions$
         .ofType(ActionTypes.LOAD_TRENDING)
-        .take(1)
+        /*.take(1)*/
         .map((action: LoadTrendingAction) => action.payload)
         .switchMap(() => {
 

@@ -29,7 +29,7 @@ export function searchReducer(state = searchInitialState, action: Actions): ISea
 
             if(!query) return state;
 
-            return Object.assign({}, searchInitialState, {
+            return Object.assign({}, state, {
                 query: query,
                 loading: true
             })
@@ -39,7 +39,7 @@ export function searchReducer(state = searchInitialState, action: Actions): ISea
 
             const entities = <IRepo[]>action.payload;
 
-            return Object.assign({}, searchInitialState, {
+            return Object.assign({}, state, {
                 entities: entities,
                 query: state.query,
                 loading: false,
@@ -51,7 +51,7 @@ export function searchReducer(state = searchInitialState, action: Actions): ISea
 
             const error = <Response>action.payload;
 
-            return Object.assign({}, searchInitialState, {
+            return Object.assign({}, state, {
                 loading: false,
                 error: {
                     statusCode : error.status,
@@ -64,7 +64,7 @@ export function searchReducer(state = searchInitialState, action: Actions): ISea
 
             const entities = <IRepo[]>action.payload;
 
-            return Object.assign({}, searchInitialState, {
+            return Object.assign({}, state, {
                 trending: entities,
                 query: state.query,
                 loading: false,

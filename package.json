@@ -4,10 +4,11 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
+    "serve": "ng serve",
     "start": "./node_modules/nodemon/bin/nodemon.js server.js",
     "build": "ng build",
     "test": "ng test",
-    "postinstall": "ng build --env=prod -prod",
+    "post2install": "ng build --env=prod -prod",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
@@ -33,6 +34,8 @@
     "@ngrx/store-devtools": "^3.2.4",
     "@ngrx/store-log-monitor": "^3.0.2",
     "@webcomponents/custom-elements": "1.0.0-alpha.3",
+    "amcharts3": "amcharts/amcharts3",
+    "amcharts3-angular2": "github:amcharts/amcharts3-angular2",
     "clarity-angular": "^0.9.3",
     "clarity-icons": "^0.9.3",
     "clarity-ui": "^0.9.3",

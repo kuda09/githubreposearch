@@ -19,8 +19,13 @@ import {MdListModule} from "@angular/material";
         EffectsModule.run(SearchEffectService)
     ],
     providers: [SearchService],
-    declarations: [SearchComponent, SearchCardComponent,
-        RepoListComponent, RepoCardComponent, TrendingComponent]
+    declarations: [
+        SearchComponent,
+        SearchCardComponent,
+        RepoListComponent,
+        RepoCardComponent,
+        TrendingComponent
+    ]
 })
 export class SearchModule {
 }
