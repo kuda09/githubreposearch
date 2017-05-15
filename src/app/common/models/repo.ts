@@ -6,6 +6,7 @@ export interface IRepo {
     full_name: string;
     description: string;
     created_at: string;
+    stargazers_count?: number;
     pushed_at: string;
     updated_at: string;
     html_url: string;
