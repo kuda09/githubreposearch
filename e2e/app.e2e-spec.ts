@@ -1,14 +1,14 @@
 import { GithubreposearchPage } from './app.po';
 
-describe('githubreposearch App', () => {
+describe('Github Repo Search App', () => {
   let page: GithubreposearchPage;
 
   beforeEach(() => {
     page = new GithubreposearchPage();
   });
 
-  it('should display message saying app works', () => {
+  it('should display header', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('app works!');
+    expect(page.getHeader().isPresent()).toBe(true);
   });
 });
