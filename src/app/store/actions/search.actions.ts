@@ -9,8 +9,7 @@ export const ActionTypes = {
     SEARCH_COMPLETE: type('Search Complete'),
     SEARCH_ERROR: type('Search Error'),
     LOAD_TRENDING: type('Trending'),
-    LOAD_TRENDING_COMPLETE: type('Trending Complete'),
-    SELECT: type('Select')
+    LOAD_TRENDING_COMPLETE: type('Trending Complete')
 }
 
 
@@ -21,7 +20,7 @@ export const ActionTypes = {
 
 export class SearchCompleteAction implements Action {
     type: string = ActionTypes.SEARCH_COMPLETE;
-    constructor(public payload) {}
+    constructor(public payload: IRepo[]) {}
 }
 
 export class SearchCompleteError implements Action {

@@ -10,11 +10,13 @@ import {MdTabsModule} from "@angular/material";
 import {RepoService} from "./services/repo.service";
 import {EffectsModule} from "@ngrx/effects";
 import {RepoEffectService} from "../store/effects/repo-effect.service";
+import {AmChartsModule} from "amcharts3-angular2";
 
 @NgModule({
     imports: [
         CommonModule,
         MdTabsModule,
+        AmChartsModule,
         EffectsModule.run(RepoEffectService),
         RepoRoutingModule
     ],

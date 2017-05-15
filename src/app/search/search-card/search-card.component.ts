@@ -22,7 +22,7 @@ export class SearchCardComponent implements OnInit {
 
     this.keyUpStream
         .distinctUntilChanged()
-        .subscribe((value) => this.search.emit(value));
+        .subscribe((value: string) => this.search.emit(value));
   }
 
   ngOnInit() {

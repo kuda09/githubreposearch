@@ -9,7 +9,7 @@ describe('GithubApiService', () => {
     });
   });
 
-  it('should ...', inject([GithubApiService], (service: GithubApiService) => {
+  it('should instantiate ...', inject([GithubApiService], (service: GithubApiService) => {
     expect(service).toBeTruthy();
   }));
 });
