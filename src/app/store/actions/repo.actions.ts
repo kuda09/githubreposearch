@@ -1,10 +1,10 @@
 import { Action } from '@ngrx/store';
-import { type } from '../../common/utils';
+import {type} from '../../shared/utils';
 import {Response} from "@angular/http";
-import {IRepo} from "../../common/models/repo";
-import {IPullRequest} from "../../common/models/pull-request";
-import {IIssue} from "../../common/models/issue";
-import {ICommit} from "../../common/models/commit";
+import {Repo} from "../../shared/models/repo";
+import {PullRequest} from "../../shared/models/pull-request";
+import {Issue} from "../../shared/models/issue";
+import {Commit} from "../../shared/models/commit";
 
 
 export const ActionTypes = {
@@ -22,7 +22,9 @@ export const ActionTypes = {
 
 export class LoadAction implements Action {
     type: string = ActionTypes.LOAD;
-    constructor(public payload: IRepo) {}
+
+    constructor(public payload: Repo) {
+    }
 }
 
 
@@ -38,7 +40,9 @@ export class LoadCommitsAction implements Action {
 
 export class LoadCommitsCompleteAction implements Action {
     type: string = ActionTypes.LOAD_COMMITS_COMPLETE;
-    constructor(public payload: ICommit[]) {}
+
+    constructor(public payload: Commit[]) {
+    }
 }
 
 export class LoadIssuesAction implements Action {
@@ -48,7 +52,9 @@ export class LoadIssuesAction implements Action {
 
 export class LoadIssuesCompleteAction implements Action {
     type: string = ActionTypes.LOAD_ISSUES_COMPLETE;
-    constructor(public payload: IIssue[]) {}
+
+    constructor(public payload: Issue[]) {
+    }
 }
 
 export class LoadPullRequestsAction implements Action {
@@ -58,7 +64,9 @@ export class LoadPullRequestsAction implements Action {
 
 export class LoadPullRequestsCompleteAction implements Action {
     type: string = ActionTypes.LOAD_PULLREQUESTS_COMPLETE;
-    constructor(public payload: IPullRequest[]) {}
+
+    constructor(public payload: PullRequest[]) {
+    }
 }
 
 

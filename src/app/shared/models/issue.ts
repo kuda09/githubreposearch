@@ -1,16 +1,16 @@
-import {IAuthor} from "./author";
+import {Author} from "./author";
 
-export interface IIssue {
+export interface Issue {
     id: number;
     html_url: string;
     number: number;
     title: string;
 
-    user: IAuthor;
+    user: Author;
     state: string;
     locked: boolean;
-    assignee: IAuthor;
-    assignees: IAuthor[];
+    assignee: Author;
+    assignees: Author[];
     milestone: Object;
     labels: IIssueLabel[];
     comments: number;

@@ -1,3 +1,3 @@
-import {IRepo} from "../../app/common/models/repo";
+import {Repo} from "../../app/shared/models/repo";
 import {reposSearchResultsTestData} from "./search-repos";
-export const reposTestData = <IRepo[]> reposSearchResultsTestData.items;
+export const reposTestData = <Repo[]> reposSearchResultsTestData.items;

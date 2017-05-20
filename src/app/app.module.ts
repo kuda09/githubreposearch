@@ -6,10 +6,10 @@ import {ClarityModule} from "clarity-angular";
 import {AppRoutingModule} from './app-routing.module';
 
 import {AppComponent} from './app.component';
-import {HeaderComponent} from './common/components/header/header.component';
-import {FooterComponent} from './common/components/footer/footer.component';
-import {ErrorAlertComponent} from './common/components/error-alert/error-alert.component'
-import {GithubApiService} from "./common/services/github-api.service";
+import {HeaderComponent} from './shared/components/header/header.component';
+import {FooterComponent} from './shared/components/footer/footer.component';
+import {ErrorAlertComponent} from './shared/components/error-alert/error-alert.component'
+import {GithubApiService} from "./shared/services/github-api.service";
 import {StoreModule} from "@ngrx/store";
 import {rootReducer, applicationInitialState} from "./store/index";
 import {RouterStoreModule} from "@ngrx/router-store";

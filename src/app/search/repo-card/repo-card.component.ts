@@ -1,5 +1,5 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {IRepo} from "../../common/models/repo";
+import {Repo} from "../../shared/models/repo";
 import {Router} from "@angular/router";
 
 @Component({
@@ -11,7 +11,7 @@ export class RepoCardComponent implements OnInit {
 
 
   @Input()
-  repo: IRepo;
+  repo: Repo;
   constructor(private router: Router) { }
 
   ngOnInit() {

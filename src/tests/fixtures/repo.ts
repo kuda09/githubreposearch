@@ -1,12 +1,12 @@
-import {IRepo} from "../../app/common/models/repo";
-import {IAuthor} from "../../app/common/models/author";
+import {Repo} from "../../app/shared/models/repo";
+import {Author} from "../../app/shared/models/author";
 
 
-export const repoTestData = <IRepo> {
+export const repoTestData = <Repo> {
     id: 2126244,
     name: 'bootstrap',
     full_name: 'twbs/bootstrap',
-    owner: <IAuthor>{
+    owner: <Author>{
         login: 'twbs',
         id: 2918581,
         avatar_url: 'https://avatars.githubusercontent.com/u/2918581?v=3',

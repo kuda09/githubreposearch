@@ -1,17 +1,17 @@
-import {IRepo} from "../../common/models/repo";
+import {Repo} from "../../shared/models/repo";
 import {Actions, ActionTypes} from "../actions/search.actions";
 import {Response} from "@angular/http";
 
-export interface ISearchState {
-    entities: IRepo[];
-    trending: IRepo[];
+export interface SearchState {
+    entities: Repo[];
+    trending: Repo[];
     query: string;
     loading: boolean;
     error: null;
 }
 
 
-export const searchInitialState: ISearchState = {
+export const searchInitialState: SearchState = {
     entities: [],
     trending: [],
     query: null,
@@ -19,7 +19,7 @@ export const searchInitialState: ISearchState = {
     error: null,
 }
 
-export function searchReducer(state = searchInitialState, action: Actions): ISearchState {
+export function searchReducer(state = searchInitialState, action: Actions): SearchState {
 
     switch (action.type) {
 
@@ -37,7 +37,7 @@ export function searchReducer(state = searchInitialState, action: Actions): ISea
 
         case ActionTypes.SEARCH_COMPLETE: {
 
-            const entities = <IRepo[]>action.payload;
+            const entities = <Repo[]>action.payload;
 
             return Object.assign({}, state, {
                 entities: entities,
@@ -60,18 +60,6 @@ export function searchReducer(state = searchInitialState, action: Actions): ISea
             })
         }
 
-        case ActionTypes.LOAD_TRENDING_COMPLETE: {
-
-            const entities = <IRepo[]>action.payload;
-
-            return Object.assign({}, state, {
-                trending: entities,
-                query: state.query,
-                loading: false,
-                error: null,
-            });
-        }
-
         default: {
 
             return state;
@@ -80,8 +68,7 @@ export function searchReducer(state = searchInitialState, action: Actions): ISea
 }
 
 
-export const getQuery = (state: ISearchState) => state.query;
-export const getLoading = (state: ISearchState) => state.loading;
-export const getTrending = (state: ISearchState) => state.trending;
-export const getEntities = (state: ISearchState) => state.entities;
-export const getError= (state: ISearchState) => state.error;
+export const getQuery = (state: SearchState) => state.query;
+export const getLoading = (state: SearchState) => state.loading;
+export const getEntities = (state: SearchState) => state.entities;
+export const getError = (state: SearchState) => state.error;

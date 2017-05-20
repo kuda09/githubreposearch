@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
 import {of} from 'rxjs/observable/of';
 import {Resolve, ActivatedRouteSnapshot, RouterStateSnapshot} from "@angular/router";
-import {IRepo} from "../../common/models/repo";
+import {Repo} from "../../shared/models/repo";
 import {Observable} from "rxjs";
-import {GithubApiService} from "../../common/services/github-api.service";
-import {IApplicationState} from "../../store/index";
+import {GithubApiService} from "../../shared/services/github-api.service";
+import {ApplicationState} from "../../store/index";
 import {Store} from "@ngrx/store";
 import {getRepoEntitySelector} from "../../store/selectors";
 import {Response} from "@angular/http";
@@ -15,28 +15,28 @@ import 'rxjs/add/operator/switchMap';
 
 
 @Injectable()
-export class RepoResolveService implements Resolve<IRepo> {
+export class RepoResolveService implements Resolve<Repo> {
 
-    constructor(private githubAPIService: GithubApiService, private store: Store<IApplicationState>) {
+    constructor(private githubAPIService: GithubApiService, private store: Store<ApplicationState>) {
     }
 
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<IRepo>|Promise<IRepo>|IRepo {
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Repo>|Promise<Repo>|Repo {
 
         const repoName = route.params['owner'] + '/' + route.params['repoName'];
 
         return this.getRepoFromStore(repoName)
             .take(1)
-            .switchMap((repo: IRepo) => {
+            .switchMap((repo: Repo) => {
                 if (repo) return of(repo);
 
                  return this.getRepoFromAPI(repoName)
             })
     }
 
-    getRepoFromStore(name: string): Observable<IRepo| boolean> {
+    getRepoFromStore(name: string): Observable<Repo| boolean> {
 
         return this.store.select(getRepoEntitySelector)
-            .map((repo: IRepo) => {
+            .map((repo: Repo) => {
                 return repo && repo.full_name === name ? repo : false;
             })
             .catch((error: Response) => {
@@ -47,10 +47,10 @@ export class RepoResolveService implements Resolve<IRepo> {
             });
     }
 
-    getRepoFromAPI(name: string): Observable<IRepo | boolean> {
+    getRepoFromAPI(name: string): Observable<Repo | boolean> {
 
         return this.githubAPIService.retrieveRepo(name)
-            .do((repo: IRepo) => this.store.dispatch(new LoadAction(repo)))
+            .do((repo: Repo) => this.store.dispatch(new LoadAction(repo)))
             .catch((error: Response) => {
                 this.store.dispatch(new LoadErrorAction(error));
                 return of(false);

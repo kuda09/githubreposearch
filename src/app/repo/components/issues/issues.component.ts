@@ -1,5 +1,5 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {IIssue} from "../../../common/models/issue";
+import {Issue} from "../../../shared/models/issue";
 
 @Component({
   selector: 'issues',
@@ -9,7 +9,7 @@ import {IIssue} from "../../../common/models/issue";
 export class IssuesComponent implements OnInit {
 
   @Input()
-  issues: IIssue[];
+  issues: Issue[];
   constructor() { }
 
   ngOnInit() {

@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Observable} from "rxjs";
-import {IRepo} from "../../common/models/repo";
+import {Repo} from "../../shared/models/repo";
 import {ActivatedRoute, Params} from "@angular/router";
 import {SearchService} from "../services/search.service";
 
@@ -10,55 +10,54 @@ import 'rxjs/add/operator/combineLatest';
 
 
 @Component({
-  selector: 'search',
-  templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss']
+    selector: 'search',
+    templateUrl: './search.component.html',
+    styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
 
-  searchQuery$: Observable<string>;
-  isLoading$: Observable<boolean>;
-  repos$: Observable<IRepo[]>;
-  trending$: Observable<IRepo[]>;
-  noResults$: Observable<boolean>;
+    searchQuery$: Observable<string>;
+    isLoading$: Observable<boolean>;
+    repos$: Observable<Repo[]>;
+    trending$: Observable<Repo[]>;
+    noResults$: Observable<boolean>;
 
-  constructor(
-      private searchService: SearchService,
-      private route: ActivatedRoute
-  ) { }
+    constructor(private searchService: SearchService,
+                private route: ActivatedRoute) {
+    }
 
-  ngOnInit() {
+    ngOnInit() {
 
-    this.searchQuery$ = this.searchService.getSearchQuery();
-    this.isLoading$ = this.searchService.isLoading();
-    this.repos$ = this.searchService.getRepos();
-    this.trending$ = this.searchService.getTrending();
+        this.searchQuery$ = this.searchService.getSearchQuery();
+        this.isLoading$ = this.searchService.isLoading();
+        this.repos$ = this.searchService.getRepos();
+        // this.trending$ = this.searchService.getTrending();
 
-    this.initialSearch();
-    this.searchService.loadTrending();
-  }
+        this.initialSearch();
+        //this.searchService.loadTrending();
+    }
 
 
-  performSearch(query) {
+    performSearch(query) {
 
-    this.searchService.performSearch(query);
-  }
+        this.searchService.performSearch(query);
+    }
 
-  initialSearch() {
+    initialSearch() {
 
-    this.route.queryParams
-        .map((params: Params) => params['q'])
-        .combineLatest(this.repos$)
-        .take(1)
-        .subscribe(combined => {
+        this.route.queryParams
+            .map((params: Params) => params['q'])
+            .combineLatest(this.repos$)
+            .take(1)
+            .subscribe(combined => {
 
-          const [q, repos] = combined;
+                const [q, repos] = combined;
 
-          if(repos.length) return;
+                if (repos.length) return;
 
-          this.performSearch(q);
+                this.performSearch(q);
 
-        })
-  }
+            })
+    }
 
 }

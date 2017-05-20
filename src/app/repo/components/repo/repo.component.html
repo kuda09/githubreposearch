@@ -1,6 +1,8 @@
 <div class="repo-container">
   <repo-card [repo]="repo$ | async"></repo-card>
   <br><br><br>
+    <h2>Repository Statistics</h2>
+    <div id="chartdiv" [style.width.%]="100" [style.height.px]="500"></div>
   <md-tab-group>
     <md-tab label="Issues">
       <issues [issues]="issues$ | async"></issues>

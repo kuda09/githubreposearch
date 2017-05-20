@@ -1,41 +1,41 @@
 import {Injectable} from '@angular/core';
 import {Store} from "@ngrx/store";
-import {IApplicationState} from "../../store/index";
+import {ApplicationState} from "../../store/index";
 import {Observable} from "rxjs";
-import {IRepo} from "../../common/models/repo";
+import {Repo} from "../../shared/models/repo";
 import {getRepoEntitySelector, getRepoCommitsSelector, getRepoPullsSelector, getRepoIssuesSelector} from "../../store/selectors";
-import {ICommit} from "../../common/models/commit";
+import {Commit} from "../../shared/models/commit";
 import {LoadCommitsAction, LoadPullRequestsAction, LoadIssuesAction} from "../../store/actions/repo.actions";
-import {IPullRequest} from "../../common/models/pull-request";
-import {IIssue} from "../../common/models/issue";
+import {PullRequest} from "../../shared/models/pull-request";
+import {Issue} from "../../shared/models/issue";
 
 @Injectable()
 export class RepoService {
 
-    constructor(private store: Store<IApplicationState>) {
+    constructor(private store: Store<ApplicationState>) {
     }
 
 
-    getRepo(): Observable<IRepo> {
+    getRepo(): Observable<Repo> {
 
         return this.store.select(getRepoEntitySelector)
     }
 
-    getCommits(repo: IRepo): Observable<ICommit[]> {
+    getCommits(repo: Repo): Observable<Commit[]> {
 
         this.store.dispatch(new LoadCommitsAction(repo));
 
         return this.store.select(getRepoCommitsSelector);
     }
 
-    getPulls(repo: IRepo): Observable<IPullRequest[]> {
+    getPulls(repo: Repo): Observable<PullRequest[]> {
 
         this.store.dispatch(new LoadPullRequestsAction(repo));
 
         return this.store.select(getRepoPullsSelector);
     }
 
-    getIssues(repo: IRepo): Observable<IIssue[]> {
+    getIssues(repo: Repo): Observable<Issue[]> {
 
         this.store.dispatch(new LoadIssuesAction(repo));
 

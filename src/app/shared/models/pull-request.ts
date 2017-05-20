@@ -1,17 +1,16 @@
+import {Author} from "./author";
 
-import {IAuthor} from "./author";
-
-export interface IPullRequest {
+export interface PullRequest {
     id: number;
     html_url: string;
     number: number;
     title: string;
 
-    user: IAuthor;
+    user: Author;
     state: string;
     locked: boolean;
-    assignee: IAuthor;
-    assignees: IAuthor[];
+    assignee: Author;
+    assignees: Author[];
     milestone: Object;
     created_at: string;
     updated_at: string;

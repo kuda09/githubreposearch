@@ -1,5 +1,5 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {IRepo} from "../../common/models/repo";
+import {Repo} from "../../shared/models/repo";
 
 @Component({
   selector: 'repo-list',
@@ -10,7 +10,7 @@ export class RepoListComponent implements OnInit {
 
 
   @Input()
-  repos: IRepo[]
+  repos: Repo[]
 
   @Input()
   query: string;

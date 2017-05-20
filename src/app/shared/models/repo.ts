@@ -1,6 +1,6 @@
-import {IAuthor} from "./author";
+import {Author} from "./author";
 
-export interface IRepo {
+export interface Repo {
     id: number;
     name: string;
     full_name: string;
@@ -15,7 +15,7 @@ export interface IRepo {
     clone_url: string;
     ssh_url: string;
     fork: boolean;
-    owner: IAuthor;
+    owner: Author;
     forks: number;
     has_issues: boolean;
     open_issues: number;
@@ -23,4 +23,12 @@ export interface IRepo {
     size: number;
     subscribers_count?: number;
     issues_url: string;
+}
+
+export interface Stats {
+    forks: number;
+    open_issues: number;
+    score?: number;
+    size: number;
+    subscribers_count?: number;
 }

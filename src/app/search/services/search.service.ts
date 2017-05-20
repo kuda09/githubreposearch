@@ -1,41 +1,42 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Store} from "@ngrx/store";
-import {IApplicationState} from "../../store/index";
+import {ApplicationState} from "../../store/index";
 import {Observable} from "rxjs";
-import {getSearchQuerySelector, getSearchLoadingSelector, getSearchEntitiesSelector, getTrendingEntitiesSelector} from "../../store/selectors";
-import {IRepo} from "../../common/models/repo";
-import {SearchAction, LoadTrendingAction} from "../../store/actions/search.actions";
+import {getSearchQuerySelector, getSearchLoadingSelector, getSearchEntitiesSelector} from "../../store/selectors";
+import {Repo} from "../../shared/models/repo";
+import {SearchAction} from "../../store/actions/search.actions";
 
 @Injectable()
 export class SearchService {
 
-  constructor(private store: Store<IApplicationState>) { }
+    constructor(private store: Store<ApplicationState>) {
+    }
 
-  getSearchQuery (): Observable<string> {
-    return this.store.select(getSearchQuerySelector);
-  }
+    getSearchQuery(): Observable<string> {
+        return this.store.select(getSearchQuerySelector);
+    }
 
-  isLoading (): Observable<boolean> {
-    return this.store.select(getSearchLoadingSelector);
-  }
+    isLoading(): Observable<boolean> {
+        return this.store.select(getSearchLoadingSelector);
+    }
 
-  getRepos (): Observable<IRepo[]> {
+    getRepos(): Observable<Repo[]> {
 
-    return this.store.select(getSearchEntitiesSelector);
-  }
+        return this.store.select(getSearchEntitiesSelector);
+    }
 
-  loadTrending (){
+    /*loadTrending() {
 
-    return this.store.dispatch(new LoadTrendingAction());
-  }
+     return this.store.dispatch(new LoadTrendingAction());
+     }*/
 
-  getTrending (): Observable<IRepo[]> {
+    /*getTrending(): Observable<Repo[]> {
 
-    return this.store.select(getTrendingEntitiesSelector);
-  }
+     return this.store.select(getTrendingEntitiesSelector);
+     }*/
 
-  performSearch(query: string) {
-    return this.store.dispatch(new SearchAction(query))
-  }
+    performSearch(query: string) {
+        return this.store.dispatch(new SearchAction(query))
+    }
 
 }

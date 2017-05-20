@@ -1,5 +1,5 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {IRepo} from "../../../common/models/repo";
+import {Repo} from "../../../shared/models/repo";
 
 @Component({
   selector: 'repo-card',
@@ -10,7 +10,7 @@ export class RepoCardComponent implements OnInit {
 
 
   @Input()
-  repo: IRepo;
+  repo: Repo;
   constructor() { }
 
   ngOnInit() {

@@ -1,5 +1,5 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {ICommit} from "../../../common/models/commit";
+import {Commit} from "../../../shared/models/commit";
 
 @Component({
   selector: 'commits',
@@ -9,7 +9,7 @@ import {ICommit} from "../../../common/models/commit";
 export class CommitsComponent implements OnInit {
 
   @Input()
-  commits: ICommit[];
+  commits: Commit[];
   constructor() { }
 
   ngOnInit() {

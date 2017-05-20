@@ -1,18 +1,18 @@
-import {IRepo} from "../../common/models/repo";
-import {ICommit} from "../../common/models/commit";
-import {IIssue} from "../../common/models/issue";
-import {IPullRequest} from "../../common/models/pull-request";
+import {Repo} from "../../shared/models/repo";
+import {Commit} from "../../shared/models/commit";
+import {Issue} from "../../shared/models/issue";
+import {PullRequest} from "../../shared/models/pull-request";
 import {Actions, ActionTypes} from "../actions/repo.actions";
 
-export interface IRepoState {
-    entity: IRepo;
+export interface RepoState {
+    entity: Repo;
     loading: boolean;
-    commits: ICommit[];
-    issues: IIssue[];
-    pulls: IPullRequest[];
+    commits: Commit[];
+    issues: Issue[];
+    pulls: PullRequest[];
 }
 
-export const repoInitialState: IRepoState = {
+export const repoInitialState: RepoState = {
     entity: null,
     loading: false,
     commits: [],
@@ -21,14 +21,14 @@ export const repoInitialState: IRepoState = {
 }
 
 
-export function repoReducer(state = repoInitialState, action: Actions) : IRepoState {
+export function repoReducer(state = repoInitialState, action: Actions): RepoState {
 
     switch (action.type) {
 
         case ActionTypes.LOAD: {
 
             return Object.assign({}, repoInitialState, {
-                entity: <IRepo>action.payload,
+                entity: <Repo>action.payload,
                 error: null,
             });
         }
@@ -36,7 +36,7 @@ export function repoReducer(state = repoInitialState, action: Actions) : IRepoSt
         case ActionTypes.LOAD_COMMITS_COMPLETE: {
 
             return Object.assign({}, state, {
-                commits: <ICommit[]>action.payload,
+                commits: <Commit[]>action.payload,
                 error: null,
                 loading: false,
             });
@@ -45,7 +45,7 @@ export function repoReducer(state = repoInitialState, action: Actions) : IRepoSt
         case ActionTypes.LOAD_ISSUES_COMPLETE: {
 
             return Object.assign({}, state, {
-                issues: <IIssue[]>action.payload,
+                issues: <Issue[]>action.payload,
                 error: null,
                 loading: false,
             });
@@ -53,7 +53,7 @@ export function repoReducer(state = repoInitialState, action: Actions) : IRepoSt
 
         case ActionTypes.LOAD_PULLREQUESTS_COMPLETE: {
             return Object.assign({}, state, {
-                pulls: <IPullRequest[]>action.payload,
+                pulls: <PullRequest[]>action.payload,
                 error: null,
             });
         }
@@ -62,8 +62,8 @@ export function repoReducer(state = repoInitialState, action: Actions) : IRepoSt
     }
 }
 
-export const getEntity = (state: IRepoState) => state.entity;
-export const getLoading = (state: IRepoState) => state.loading;
-export const getCommits = (state: IRepoState) => state.commits;
-export const getIssues = (state: IRepoState) => state.issues;
-export const getPulls = (state: IRepoState) => state.pulls;
+export const getEntity = (state: RepoState) => state.entity;
+export const getLoading = (state: RepoState) => state.loading;
+export const getCommits = (state: RepoState) => state.commits;
+export const getIssues = (state: RepoState) => state.issues;
+export const getPulls = (state: RepoState) => state.pulls;

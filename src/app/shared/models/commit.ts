@@ -1,6 +1,6 @@
-import {IAuthor} from "./author";
+import {Author} from "./author";
 
-export interface ICommit {
+export interface Commit {
     sha: string;
     commit: {
         message: string;
@@ -18,7 +18,7 @@ export interface ICommit {
     };
     html_url: string;
     url: string;
-    author?: IAuthor;
-    committer: IAuthor;
+    author?: Author;
+    committer: Author;
 
 }

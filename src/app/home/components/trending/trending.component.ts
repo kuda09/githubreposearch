@@ -1,16 +1,16 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {IRepo} from "../../common/models/repo";
+import {Repo} from "../../../shared/models/repo";
 
 @Component({
   selector: 'trending',
-  templateUrl: './trending.component.html',
-  styleUrls: ['./trending.component.scss']
+    templateUrl: 'trending.component.html',
+    styleUrls: ['trending.component.scss']
 })
 export class TrendingComponent implements OnInit {
 
 
   @Input()
-  trends: IRepo[];
+  trends: Repo[];
   constructor() { }
 
   ngOnInit() {
