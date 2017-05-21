@@ -6,9 +6,11 @@ import {SearchState, searchReducer} from "./reducers/search.reducer";
 import {environment} from "../../environments/environment";
 import {RepoState, repoReducer} from "./reducers/repo.reducer";
 import {HomeState, homeReducer} from "./reducers/home.reducer";
+import {LoginState, loginReducer} from "./reducers/login.reducer";
 
 
 export interface ApplicationState {
+    user: LoginState,
     search: SearchState;
     home: HomeState;
     repo: RepoState
@@ -18,6 +20,7 @@ export interface ApplicationState {
 export const applicationInitialState = {router: {path: "/"}}
 
 const reducers = {
+    login: loginReducer,
     search: searchReducer,
     home: homeReducer,
     router: routerReducer,

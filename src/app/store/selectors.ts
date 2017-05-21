@@ -5,12 +5,20 @@ import {getEntities, getQuery, getLoading, getError} from "./reducers/search.red
 import {RouterState} from "@ngrx/router-store";
 import {getPulls, getIssues, getCommits, getEntity} from "./reducers/repo.reducer";
 import {getTrending, getTags} from "./reducers/home.reducer";
+import {getUser, getLoginError, getLoginLoading} from "./reducers/login.reducer";
 
 
 //home selectors
 export const getHomeStateSelector = (state: ApplicationState) => state.home;
 export const getTrendingEntitiesSelector = createSelector(getHomeStateSelector, getTrending);
 export const getTagsEntitiesSelector = createSelector(getHomeStateSelector, getTags);
+
+//login selectors
+export const getLoginStateSelector = (state: ApplicationState) => state.user;
+export const getUserSelector = createSelector(getLoginStateSelector, getUser);
+export const getLoadingSelector = createSelector(getLoginStateSelector, getLoginLoading);
+export const getLoginErrorSelector = createSelector(getLoginStateSelector, getLoginError);
+
 
 //search selectors
 export const getSearchStateSelector = (state: ApplicationState) => state.search;
