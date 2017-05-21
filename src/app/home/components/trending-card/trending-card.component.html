@@ -1,0 +1,28 @@
+<div class="card" (click)="goTo(repo.owner.login, repo.name)">
+
+    <div class="card-block">
+        <div class="card-title">
+            {{repo.name}}
+        </div>
+        <div class="card-text">
+            {{repo.description}}
+        </div>
+    </div>
+    <div class="card-footer">
+
+    <span class="label label-purple" title="Primary language">
+      {{repo.language}}
+    </span>
+        <span class="label label-orange" title="Stars">
+      Stars: <span class="badge">{{repo.stargazers_count | number}}</span>
+    </span>
+        <span class="label label-light-blue" title="Forks">
+      Forks: <span class="badge">{{repo.forks | number}}</span>
+    </span>
+        <a class="label clickable" href="{{repo.owner.html_url}}" title="{{repo.owner.login}}">
+            Built by:
+            <img src="{{repo.owner.avatar_url}}" class="badge badge--img" alt="{{repo.owner.login}}"/>
+        </a>
+        <span class="label">Built by {{repo.updated_at | date:'medium'}}</span>
+    </div>
+</div>

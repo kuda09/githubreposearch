@@ -1,0 +1,17 @@
+<div class="home-container">
+    <div class="row">
+        <div class="col-md-4">
+            <tags
+                    [trends]="trending$ | async"
+            ></tags>
+        </div>
+        <div class="col-md-8">
+            <trending
+                    [trends]="trending$ | async"
+            >
+            </trending>
+        </div>
+    </div>
+</div>
+
+
