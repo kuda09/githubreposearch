@@ -76,9 +76,8 @@ export class GithubApiService {
 
     getProfile() {
 
-
         return this.authHttp.get(`https://api.github.com/user`)
-            .map(res => res.json());
+            .map((res: Response) => res.json());
 
     }
 

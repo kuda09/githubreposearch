@@ -34,17 +34,4 @@ export class SearchEffectService {
             .map((repos: Repo[]) => new SearchCompleteAction(repos))
             .catch((error: Response) => of(new SearchCompleteError(error)))
         });
-
-
-    /*@Effect()
-    trending$: Observable<LoadTrendingCompleteAction> = this.actions$
-        .ofType(ActionTypes.LOAD_TRENDING)
-     /!*.take(1)*!/
-        .map((action: LoadTrendingAction) => action.payload)
-        .switchMap(() => {
-
-            return this.githubAPIService.retrieveTrendingRepos()
-     .map((repos: Repo[]) => new LoadTrendingCompleteAction(repos))
-                .catch((error: Response) => of(new SearchCompleteError(error)))
-     });*/
 }

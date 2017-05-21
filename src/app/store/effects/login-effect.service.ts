@@ -14,8 +14,9 @@ import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/switchMap';
 import {Injectable} from "@angular/core";
 import {StorageService} from "../../shared/services/storage.service";
-import {Store} from "@ngrx/store";
+import {Store, Action} from "@ngrx/store";
 import {ApplicationState} from "../index";
+import {empty} from "rxjs/observable/empty";
 
 @Injectable()
 export class LoginEffectService {
@@ -29,26 +30,27 @@ export class LoginEffectService {
 
 
     @Effect()
-    login$: Observable<LoginSuccessAction | LoginFailedAction> = this.actions$
+    login$: Observable<Action> = this.actions$
         .ofType(ActionTypes.LOGIN)
+        .take(1)
         .map((action: LoginAction) => action.payload)
         .switchMap((code) => {
 
             return this.githubAPIService.login(code)
                 .map((resString) => {
 
+                    if (!resString) return empty();
+
                         let error = resString.split("=");
 
                         if (error[0] === "error") {
-                            return //of(new LoginFailedAction(error))
+                            return of(new LoginFailedAction(error));
                         }
                         return this.store.dispatch(new LoginSuccessAction(error[1]))
 
                     }
                 )
                 .catch((error: Response) => {
-
-
                     this.store.dispatch(new LoginFailedAction(error))
 
                     return of(null);
@@ -57,8 +59,9 @@ export class LoginEffectService {
 
 
     @Effect()
-    loginSuccess$: Observable<GetUserProfileAction> = this.actions$
+    loginSuccess$: Observable<Action> = this.actions$
         .ofType(ActionTypes.LOGIN_SUCCESS)
+        .take(1)
         .map((action: LoginSuccessAction) => action.payload)
         .switchMap((token) => {
 
