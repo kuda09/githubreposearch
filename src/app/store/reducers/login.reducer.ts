@@ -25,7 +25,7 @@ export function loginReducer(state = homeInitialState, action: Actions): LoginSt
             });
         }
 
-        case ActionTypes.LOGIN_SUCCESS: {
+        case ActionTypes.GET_PROFILE: {
 
             return Object.assign({}, state, {
                 user: <User>action.payload,

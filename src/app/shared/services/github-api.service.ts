@@ -6,7 +6,7 @@ import {Repo} from "../models/repo";
 import {PullRequest} from "../models/pull-request";
 import {Issue} from "../models/issue";
 import {Commit} from "../models/commit";
-import {User} from "../models/user";
+import {AuthHttp} from "angular2-jwt";
 
 @Injectable()
 export class GithubApiService {
@@ -15,8 +15,9 @@ export class GithubApiService {
     requestOptions: RequestOptionsArgs = {
         search: `client_id=${config.GITHUB_API_CLIENT_ID}&client_secret=${config.GITHUB_API_CLIENT_SECRET}`,
     }
+    body: {client_id: string; client_secret: string; code: any; redirect_uri: string; state: string};
 
-    constructor(private http: Http) {
+    constructor(private http: Http, private authHttp: AuthHttp) {
     }
 
     retrieveRepos(q: string): Observable<Repo[]> {
@@ -57,9 +58,28 @@ export class GithubApiService {
         return offsetDate.toISOString().substr(0, 10);
     }
 
-    login(payload): Observable<User> {
-        return this.http.get(`${this.API_URL}/users/${payload.username}`, this.requestOptions)
-            .map((res: Response) => res.json());
+
+    login(code): Observable<any> {
+
+        this.body = {
+            "client_id": config.GITHUB_API_CLIENT_ID,
+            "client_secret": config.GITHUB_API_CLIENT_SECRET,
+            "code": code,
+            "redirect_uri": "http://localhost:4200/login",
+            "state": config.state
+        };
+
+        return this.http.post(`https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token`, this.body)
+            .map((res: Response) => res.text());
+    }
+
+
+    getProfile() {
+
+
+        return this.authHttp.get(`https://api.github.com/user`)
+            .map(res => res.json());
+
     }
 
 }

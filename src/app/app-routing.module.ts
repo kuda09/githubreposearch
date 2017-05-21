@@ -1,5 +1,7 @@
-import {NgModule} from '@angular/core';
+import {NgModule, ModuleWithProviders} from '@angular/core';
 import {Routes, RouterModule, PreloadAllModules} from '@angular/router';
+import {AuthGuard} from "./shared/services/auth-guard.service";
+import {LoginService} from "./shared/services/login.service";
 
 
 const appRoutes: Routes = [
@@ -16,17 +18,26 @@ const appRoutes: Routes = [
         loadChildren: './search/search.module#SearchModule',
     },
     {
+        path: 'profile',
+        loadChildren: './profile/profile.module#ProfileModule',
+    },
+    {
         path: 'repo',
         loadChildren: './repo/repo.module#RepoModule',
     }
 ];
+
+export const appRoutingProviders: any[] = [
+    [AuthGuard, LoginService]
+];
+
 
 @NgModule({
     imports: [
         RouterModule.forRoot(appRoutes, {preloadingStrategy: PreloadAllModules}/**/),
     ],
     exports: [RouterModule],
-    providers: []
+    providers: [AuthGuard, LoginService]
 })
 export class AppRoutingModule {
 }
