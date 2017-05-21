@@ -8,7 +8,7 @@
     "start": "./node_modules/nodemon/bin/nodemon.js server.js",
     "build": "ng build",
     "test": "ng test",
-    "preinstall": "npm install -g angular-cli",
+    "preinstall": "npm install -g @angular/cli",
     "postinstall": "ng build --env=prod -prod",
     "lint": "ng lint",
     "e2e": "ng e2e"
