@@ -69,7 +69,7 @@ export class GithubApiService {
             "state": config.state
         };
 
-        return this.http.post(`https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token`, this.body)
+        return this.http.post(`/authenticate`, this.body)
             .map((res: Response) => res.text());
     }
 

@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {LoginService} from "../../services/login.service";
-import {config} from "../../../shared/config";
 import {ActivatedRoute, Params} from "@angular/router";
 
-import 'rxjs/add/operator/take';
+import {config} from "../../../shared/config";
 
+import {LoginService} from "../../services/login.service";
+
+import 'rxjs/add/operator/take';
 
 @Component({
     selector: 'login',
@@ -23,7 +24,6 @@ export class LoginComponent implements OnInit {
             .map((params: Params) => params['code'])
             .take(1)
             .subscribe(code => {
-
                 if (code === undefined) return;
                 this.loginService.login(code)
             })
@@ -31,8 +31,6 @@ export class LoginComponent implements OnInit {
     }
 
     login() {
-
-        //this.loginService.login();
 
         window.location.href = `https://github.com/login/oauth/authorize?client_id=${config.GITHUB_API_CLIENT_ID}&client_secret=${config.GITHUB_API_CLIENT_SECRET}&allow_signup=true&state=${config.state}`
 

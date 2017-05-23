@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Store} from "@ngrx/store";
+
 import {ApplicationState} from "../../store/index";
 import {LoginAction} from "../../store/actions/login.actions";
 import {getLoginErrorSelector, getUserSelector, getLoadingSelector} from "../../store/selectors";

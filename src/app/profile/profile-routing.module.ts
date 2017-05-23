@@ -23,5 +23,5 @@ const profileRoutes: Routes = [
     ],
     exports: [RouterModule],
 })
-export class RepoRoutingModule {
+export class ProfileRoutingModule {
 }

@@ -1,4 +1,4 @@
-import {Effect, Actions} from "@ngrx/effects";
+import {Effect, Actions, toPayload} from "@ngrx/effects";
 import {Observable} from "rxjs";
 import {GithubApiService} from "../../shared/services/github-api.service";
 import {of} from "rxjs/observable/of";
@@ -16,7 +16,6 @@ import {Injectable} from "@angular/core";
 import {StorageService} from "../../shared/services/storage.service";
 import {Store, Action} from "@ngrx/store";
 import {ApplicationState} from "../index";
-import {empty} from "rxjs/observable/empty";
 
 @Injectable()
 export class LoginEffectService {
@@ -32,37 +31,29 @@ export class LoginEffectService {
     @Effect()
     login$: Observable<Action> = this.actions$
         .ofType(ActionTypes.LOGIN)
-        .take(1)
-        .map((action: LoginAction) => action.payload)
+        .map(toPayload)
         .switchMap((code) => {
 
             return this.githubAPIService.login(code)
-                .map((resString) => {
+                .map((token) => {
 
-                    if (!resString) return empty();
+                    token = token.split("=");
 
-                        let error = resString.split("=");
-
-                        if (error[0] === "error") {
-                            return of(new LoginFailedAction(error));
+                    if (token[0] === "error") {
+                        return of(new LoginFailedAction(token));
                         }
-                        return this.store.dispatch(new LoginSuccessAction(error[1]))
+                    return of(new LoginSuccessAction(token[1]))
 
                     }
                 )
-                .catch((error: Response) => {
-                    this.store.dispatch(new LoginFailedAction(error))
-
-                    return of(null);
-                })
+                .catch((error: Response) => of(new LoginFailedAction(error)));
         });
 
 
     @Effect()
     loginSuccess$: Observable<Action> = this.actions$
         .ofType(ActionTypes.LOGIN_SUCCESS)
-        .take(1)
-        .map((action: LoginSuccessAction) => action.payload)
+        .map(toPayload)
         .switchMap((token) => {
 
             this.storage.addStorage('token', token.split("&")[0]);
